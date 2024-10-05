@@ -123,6 +123,7 @@ const PlaidLink = ({
   ) : (
     <div>{error && <p>Error: {error.message}</p>}</div>
   );
+
 };
 
 export default PlaidLink;
