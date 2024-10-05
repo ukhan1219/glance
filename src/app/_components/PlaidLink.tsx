@@ -84,9 +84,9 @@ const PlaidLink = ({ onOpen, onSuccess, setBalance }: { onOpen: (openPlaid: () =
         <PlaidAuthentication publicToken={publicToken} setBalance={setBalance} />
     ) : (
         <div>
-            <button onClick={() => open()} disabled={!ready || !linkToken}>
+            {/* <button onClick={() => open()} disabled={!ready || !linkToken}>
                 Connect a bank account
-            </button>
+            </button> */}
             {error && <p>Error: {error.message}</p>}
         </div>
     );
