@@ -83,11 +83,12 @@ const NewPage = () => {
           </div>
 
           {/* Centered Balance text, moved up */}
-          <div className="absolute inset-0 flex items-center justify-center p-2" style={{ top: '20%' }}>
-            <p className="fira-sans-regular text-4xl font-bold">
-              Balance: <span className="text-green-500">${balance || "N/A"}</span>
-            </p>
-          </div>
+<div className="absolute inset-0 flex items-center justify-center p-2" style={{ top: '20%' }}>
+  <p className="fira-sans-regular text-4xl font-bold">
+    Balance: <span className="text-green-500">${balance || "N/A"}</span>
+  </p>
+</div>
+
         </div>
 
         {/* Right Foreground Div */}
@@ -160,6 +161,7 @@ const NewPage = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
