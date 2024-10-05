@@ -5,6 +5,7 @@ import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import PlaidLink from "../_components/PlaidLink";
 import Chart from "chart.js/auto";
 
+
 const NewPage = () => {
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
