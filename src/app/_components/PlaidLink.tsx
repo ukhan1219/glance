@@ -7,6 +7,7 @@ import { api } from '~/trpc/react';
 function PlaidAuthentication({ publicToken, setBalance }: { publicToken: string, setBalance: (balance: string) => void }) {
     const { mutate: exchangePublicToken, data: dataPub, error: errorPub } = api.plaid.exchangePublicToken.useMutation();
     const { mutate: getAccountBalance, data: dataBalance, error: errorBalance } = api.plaid.getAccountBalance.useMutation();
+    const { mutate: getTransactions, data: dataTransactions, error: errorTransactions } = api.plaid.getTransactions.useMutation();
 
     useEffect(() => {
         async function fetchData() {
@@ -17,16 +18,36 @@ function PlaidAuthentication({ publicToken, setBalance }: { publicToken: string,
         fetchData();
     }, [publicToken, exchangePublicToken]);
 
-    // Trigger account balance fetching once access token is available
     useEffect(() => {
         if (dataPub?.access_token) {
-            getAccountBalance({
-                accessToken: dataPub.access_token,  // Fetch the account balance using the access token
+            const accessToken = dataPub.access_token;
+
+            // Fetch account balance
+            getAccountBalance({ accessToken });
+
+            // Fetch transactions
+            const endDate = new Date().toISOString().split('T')[0]; // Today's date
+            const startDate = new Date();
+            startDate.setDate(startDate.getDate() - 30); // 30 days ago
+            const startDateString = startDate.toISOString().split('T')[0];
+
+            getTransactions({
+                accessToken,
+                startDate: startDateString,
+                endDate,
             });
         }
-    }, [dataPub, getAccountBalance]);
+    }, [dataPub, getAccountBalance, getTransactions]);
 
-    // Update the balance in the dashboard when available
+    useEffect(() => {
+        if (dataTransactions) {
+            const { transactions } = dataTransactions;
+
+            // Handle the transactions (e.g., display or store them)
+            console.log('Transactions:', transactions);
+        }
+    }, [dataTransactions]);
+
     useEffect(() => {
         if (dataBalance?.accounts) {
             const totalBalance = dataBalance.accounts
@@ -40,6 +61,7 @@ function PlaidAuthentication({ publicToken, setBalance }: { publicToken: string,
         <div>
             {errorPub && <p>Error exchanging public token: {errorPub.message}</p>}
             {errorBalance && <p>Error fetching account balance: {errorBalance.message}</p>}
+            {errorTransactions && <p>Error getting transactions: {errorTransactions.message}</p>}
         </div>
     );
 }
