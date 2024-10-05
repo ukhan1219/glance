@@ -9,7 +9,7 @@ import { plaidRouter } from "./routers/plaid";
 export const appRouter = createTRPCRouter({
   post: postRouter,
   // gemini: geminiRouter, 
-  plaid: plaidRouter,
+  // plaid: plaidRouter,
 });
 
 // export type definition of API
