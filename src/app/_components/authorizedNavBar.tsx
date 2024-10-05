@@ -1,8 +1,8 @@
 import React from "react";
-
-const AuthorizedNavBar = ({ name }) => {
+// TO DO IMPLEMENT NAME PASSING
+const AuthorizedNavBar = () => {
   return (
-    <div className="bg-[#292464] min-h-screen text-white p-5">
+    <div className="bg-[#292464] text-white p-5">
       <title>Glance</title>
 
       <div className="flex justify-between items-center">
@@ -10,13 +10,13 @@ const AuthorizedNavBar = ({ name }) => {
         <div> 
           <h1 className="manrope-custom" style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%" }}>Glance</h1>
           <h2 className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "0%" }}>
-            Welcome back, {name}
+            Welcome back, 
           </h2>
         </div>
 
         {/* Right Side - Buttons */}
         {/* Insight and dash buttons */}
-        <div className="flex gap-16 mt-10"> {}
+        <div className="flex gap-16 mt-10"> 
           <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "10%" }}>
             Dashboard
           </button>
