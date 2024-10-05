@@ -27,6 +27,9 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: z.string(),
     GOOGLE_CLIENT_SECRET: z.string(),
     GEMINI_API_KEY: z.string(),
+    PLAID_CLIENT_ID: z.string(),
+    PLAID_SECRET: z.string(),
+    PLAID_ENV: z.string(),
   },
 
   /**
@@ -52,6 +55,9 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+    PLAID_CLIENT_ID: process.env.PLAID_CLIENT_ID,
+    PLAID_SECRET: process.env.PLAID_SECRET,
+    PLAID_ENV: process.env.PLAID_ENV,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
