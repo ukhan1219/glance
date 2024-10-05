@@ -2,40 +2,40 @@ import React from "react";
 
 const AuthorizedNavBar = ({ name }) => {
   return (
-    <div style={{ backgroundColor: "#292464", minHeight: "100vh", color: "#fff", padding: "20px", paddingTop: "5px" }}>
+    <div className="bg-[#292464] min-h-screen text-white p-5">
       <title>Glance</title>
-      
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        {}
-        <div>
-          <h1 className="manrope-custom" style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0", paddingTop: "0" }}>Glance</h1>
-          <h2 className="fira-sans-regular" style={{ fontSize: "2rem", fontWeight: "bold", marginTop: "0%" }}>
+
+      <div className="flex justify-between items-center">
+        {/* Left Side - Title and Welcome Message */}
+        <div> 
+          <h1 className="manrope-custom text-4xl font-bold mt-0 pt-0">Glance</h1>
+          <h2 className="fira-sans-regular text-2xl font-bold mt-0">
             Welcome back, {name}
           </h2>
         </div>
-        
+
         {/* Right Side - Buttons */}
-        <div>
-          <button className="fira-sans-regular" style={buttonStyle}>Dashboard</button>
-          <button className="fira-sans-regular" style={buttonStyle}>Insights</button>
+        {/* Insight and dash buttons */}
+        <div className="flex gap-16 mt-10"> {}
+          <button className="text-white text-2xl px-4 rounded">
+            Dashboard
+          </button>
+          <button className="text-white text-2xl px-4 rounded">
+            Insights
+          </button>
+          {/* Settings Icon */}
+          <div className="flex gap-16"> {}
+          <button className="text-white text-2xl px-4 rounded">
+            Logout
+          </button>
+        </div>
         </div>
       </div>
 
       {/* Divider Line */}
-      <div style={{ height: "1px", backgroundColor: "#fff", marginTop: "10px", width: "100%" }}></div>
+      <div className="h-px bg-white mt-2 w-full"></div>
     </div>
   );
-};
-
-const buttonStyle = {
-  backgroundColor: "#fff",
-  color: "#292464",
-  border: "none",
-  padding: "10px 20px",
-  marginLeft: "10px",
-  borderRadius: "5px",
-  cursor: "pointer",
-  fontWeight: "bold"
 };
 
 export default AuthorizedNavBar;
