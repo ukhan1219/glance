@@ -1,6 +1,6 @@
 import React from "react";
-// TO DO IMPLEMENT NAME PASSING
-const AuthorizedNavBar = () => {
+
+const NotAuthorizedNavBar = () => {
   return (
     <div className="bg-[#292464] text-white p-5">
       <title>Glance</title>
@@ -18,12 +18,12 @@ const AuthorizedNavBar = () => {
         {/* Insight and dash buttons */}
         <div className="flex gap-16 mt-10"> 
           <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "10%" }}>
-            Dashboard
-          </button>
-          <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "10%" }}>
-            Insights
+            About
           </button>
           {/* Settings Icon */}
+          <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "10%" }}>
+            Login
+          </button>
         </div>
       </div>
 
@@ -33,4 +33,4 @@ const AuthorizedNavBar = () => {
   );
 };
 
-export default AuthorizedNavBar;
+export default NotAuthorizedNavBar;
