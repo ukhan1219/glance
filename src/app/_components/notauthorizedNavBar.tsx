@@ -24,9 +24,6 @@ const AuthorizedNavBar = () => {
             Insights
           </button>
           {/* Settings Icon */}
-          <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "10%" }}>
-            Logout
-          </button>
         </div>
       </div>
 
