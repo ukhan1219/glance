@@ -63,6 +63,8 @@ model User {
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    accessToken   String?
+    itemId        String?
 }
 
 model VerificationToken {

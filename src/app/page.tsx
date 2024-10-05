@@ -23,7 +23,6 @@ export default async function Home() {
               Welcome to my personal page! Here's some information about me...
             </p>
           </div>
-
           {/* Right Section - Logo Container */}
           <div className="w-5/12 flex justify-center">
             <div className="bg-site-foreground w-3/4 h-1/2 rounded-lg flex items-center justify-center p-10">
