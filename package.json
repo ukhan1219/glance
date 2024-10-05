@@ -28,6 +28,7 @@
     "chart.js": "^4.4.4",
     "flowbite": "^2.5.2",
     "geist": "^1.3.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "^14.2.4",
     "next-auth": "^4.24.7",
     "plaid": "^28.0.0",
