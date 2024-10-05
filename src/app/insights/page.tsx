@@ -1,12 +1,12 @@
 import React from "react";
-import AuthorizedNavBar from "../_components/authorizedNavBar";
+import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import { HydrateClient } from "~/trpc/server";
 
 const NewPage = () => {
   return (
     <HydrateClient>
       <div className="bg-site-background min-h-screen text-white">
-        <AuthorizedNavBar />
+        <NotAuthorizedNavBar />
 
         {/* First Row */}
         <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh]">
