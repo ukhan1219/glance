@@ -1,12 +1,17 @@
-import React from 'react';
-import './globals.css'; 
+import React, { ReactNode } from 'react'; // Import ReactNode
+import '../../styles/globals.css'; 
 
 export const metadata = {
   title: 'Your Site Title',
   description: 'Your Site Description',
 };
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: ReactNode; 
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => { 
+  // Specify the type of the component
   return (
     <html lang="en">
       <head>
@@ -18,7 +23,7 @@ const Layout = ({ children }) => {
         />
       </head>
       <body>
-        {children}
+        {children} {}
       </body>
     </html>
   );
