@@ -7,6 +7,7 @@ import {
 import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
+import CoinbaseProvider from "next-auth/providers/coinbase";
 
 import { env } from "~/env";
 import { db } from "~/server/db";
@@ -66,6 +67,10 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
+    CoinbaseProvider({
+      clientId: env.COINBASE_CLIENT_ID,
+      clientSecret: env.COINBASE_CLIENT_SECRET,
+    })
   ],
 };
 
