@@ -4,15 +4,22 @@ import Link from "next/link";
 const NotAuthorizedNavBar = () => {
   return (
     <div className="bg-[#292464] text-white p-5">
-      <title>Glance</title>
+      <title>
+        Glance
+      </title>
 
       <div className="flex justify-between items-center">
         {/* Left Side - Title and Welcome Message */}
         <div>
-          <h1 className="manrope-custom" style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%" }}>Glance</h1>
-          <h2 className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "0%" }}>
+          <Link href="/">
+            <h1 className="manrope-custom" style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%" }}>
+              Glance
+            </h1>
+          </Link>
+          {/* let's work on the sign in/ welcome back after we get all the api's working */}
+          {/* <h2 className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "0%" }}>
             Welcome back, 
-          </h2>
+          </h2> */}
         </div>
 
         {/* Insight and dash buttons */}
@@ -22,7 +29,7 @@ const NotAuthorizedNavBar = () => {
               Insights
             </button>
           </Link>
-          <Link href="/dashboards">
+          <Link href="/dashboard">
             <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
               Dashboards
             </button>
