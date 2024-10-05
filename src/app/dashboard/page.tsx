@@ -95,6 +95,7 @@ const NewPage = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
