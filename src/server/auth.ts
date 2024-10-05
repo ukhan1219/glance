@@ -68,9 +68,9 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
     CoinbaseProvider({
-      clientId: env.COINBASE_CLIENT_ID,
-      clientSecret: env.COINBASE_CLIENT_SECRET,
-    })
+      clientId: process.env.COINBASE_CLIENT_ID,
+      clientSecret: process.env.COINBASE_CLIENT_SECRET,
+    }),
   ],
 };
 

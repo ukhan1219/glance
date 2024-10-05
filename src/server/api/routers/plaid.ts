@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { createTRPCRouter, publicProcedure } from '~/server/api/trpc';
-import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid';
+import { Configuration, PlaidApi, PlaidEnvironments, CountryCode, Products} from 'plaid';
 
 // Configure the Plaid client
 const configuration = new Configuration({
@@ -18,53 +18,53 @@ const plaidClient = new PlaidApi(configuration);
 // Define the tRPC router for Plaid operations
 export const plaidRouter = createTRPCRouter({
   createLinkToken: publicProcedure
-  .input(z.object({ clientUserId: z.string() }))
-  .mutation(async ({ input }) => {
-    const { clientUserId } = input;
+    .input(z.object({ clientUserId: z.string() }))
+    .mutation(async ({ input }) => {
+      const { clientUserId } = input;
 
-    const request = {
-      user: {
-        client_user_id: clientUserId,
-      },
-      client_name: 'Plaid Test App',
-      products: ['auth', 'transactions'], // Include 'transactions' here
-      language: 'en',
-      redirect_uri: 'http://localhost:3000/',
-      country_codes: ['US'],
-    };
+      const request = {
+        user: {
+          client_user_id: clientUserId,
+        },
+        client_name: 'Plaid Test App',
+        products: [Products.Auth, Products.Transactions], // Include 'transactions' here
+        language: 'en',
+        redirect_uri: 'http://localhost:3000/',
+        country_codes: [CountryCode.Us],
+      };
 
-    try {
-      const createTokenResponse = await plaidClient.linkTokenCreate(request);
-      return createTokenResponse.data;
-    } catch (error) {
-      console.error('Error creating link token:', error);
-      throw new Error('Failed to create link token');
-    }
-  }),
-    exchangePublicToken: publicProcedure
+      try {
+        const createTokenResponse = await plaidClient.linkTokenCreate(request);
+        return createTokenResponse.data;
+      } catch (error) {
+        console.error('Error creating link token:', error);
+        throw new Error('Failed to create link token');
+      }
+    }),
+  exchangePublicToken: publicProcedure
     .input(z.object({ publicToken: z.string(), }))
-    .mutation(async  ({ input }) => {
-        const  { publicToken } = input;
+    .mutation(async ({ input }) => {
+      const { publicToken } = input;
 
 
-        try {
-            const response = await plaidClient.itemPublicTokenExchange({public_token: publicToken,});
+      try {
+        const response = await plaidClient.itemPublicTokenExchange({ public_token: publicToken, });
 
-            const {access_token, item_id} = response.data;
+        const { access_token, item_id } = response.data;
 
-            // await db.saveAccessToken(userId, access_token);
+        // await db.saveAccessToken(userId, access_token);
 
-            return {
-                public_token_exchange: 'complete',
-                access_token,
-                item_id,
-            };
-        } catch (error) {
-            throw  new Error('Failed to exchange public token');
-        }
+        return {
+          public_token_exchange: 'complete',
+          access_token,
+          item_id,
+        };
+      } catch (error) {
+        throw new Error('Failed to exchange public token');
+      }
     }),
 
-    getAccountBalance: publicProcedure
+  getAccountBalance: publicProcedure
     .input(z.object({ accessToken: z.string() }))  // Input is the access token
     .mutation(async ({ input }) => {
       const { accessToken } = input;
@@ -83,7 +83,7 @@ export const plaidRouter = createTRPCRouter({
       }
     }),
 
-    syncTransactions: publicProcedure
+  syncTransactions: publicProcedure
     .input(
       z.object({
         accessToken: z.string(),
@@ -130,7 +130,7 @@ export const plaidRouter = createTRPCRouter({
       }
     }),
 
-    getTransactions: publicProcedure
+  getTransactions: publicProcedure
     .input(
       z.object({
         accessToken: z.string(),
@@ -156,7 +156,7 @@ export const plaidRouter = createTRPCRouter({
           transactions: data.transactions,
           total_transactions: data.total_transactions,
         };
-      } catch (error) {
+      } catch (error: any) {  // Casting error to 'any'
         console.error('Error getting transactions:', error.response?.data || error);
         throw new Error('Failed to get transactions: ' + (error.response?.data?.error_message || error.message));
       }

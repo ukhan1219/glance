@@ -33,8 +33,8 @@ function PlaidAuthentication({ publicToken, setBalance }: { publicToken: string,
 
             getTransactions({
                 accessToken,
-                startDate: startDateString,
-                endDate,
+                startDate: startDateString ?? '',  // Ensure it's a string
+                endDate: endDate ?? '',
             });
         }
     }, [dataPub, getAccountBalance, getTransactions]);
@@ -98,8 +98,8 @@ const PlaidLink = ({ onOpen, onSuccess, setBalance }: { onOpen: (openPlaid: () =
     // Pass the open function and ready status to the parent component
     useEffect(() => {
         if (onOpen && ready) {
-            onOpen(open, ready);
-        }
+            onOpen(open as () => void, ready);
+          }
     }, [onOpen, open, ready]);
 
     return publicToken ? (
