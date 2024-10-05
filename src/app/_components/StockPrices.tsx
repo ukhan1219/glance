@@ -1,5 +1,3 @@
-// components/StockPrices.tsx
-
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '~/trpc/react';
@@ -15,29 +13,33 @@ interface EODData {
 
 const StockPrices = () => {
   const [ticker, setTicker] = useState('AAPL'); // Default ticker
-  const [eodData, setEODData] = useState<EODData | null>(null);
+  const [eodData, setEODData] = useState<EODData[] | null>(null);  // Updated to handle array of EODData
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
 
   const hasFetchedRef = useRef(false); // Ref to track if fetch has been called
 
-  const { mutate: getLatestEODData, isLoading } = api.polygon.getLatestEODData.useMutation({
+  const { mutate: getLatestEODData } = api.polygon.getLatestEODData.useMutation({
     onSuccess: (data) => {
       console.log('Received EOD data:', data, ticker);
-      setEODData(data.eodData);
+      setEODData(data.eodData);  // Assuming eodData is an array
       setErrorMessage(null);
+      setIsLoading(false); // Reset loading state
     },
     onError: (error) => {
       console.error('Error fetching EOD data:', error);
       setErrorMessage(error.message);
       setEODData(null);
+      setIsLoading(false); // Reset loading state
     },
   });
 
   // Function to fetch EOD data
   const fetchEODData = () => {
     if (!hasFetchedRef.current) {
+      setIsLoading(true); // Set loading state before fetching
       console.log('Fetching EOD data for ticker:', ticker);
-      getLatestEODData({ ticker });
+      getLatestEODData();  // Ensure that the backend expects this input, or remove it if not needed
       hasFetchedRef.current = true; // Prevent future fetches
     }
   };
@@ -46,6 +48,7 @@ const StockPrices = () => {
   useEffect(() => {
     fetchEODData();
   }, []);
+
 
   return (
     <div></div>
