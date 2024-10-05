@@ -10,7 +10,7 @@ const NewPage = () => {
         </AuthorizedNavBar>
       </div>
     </HydrateClient>
-  );
+  );  
 };
 
 export default NewPage;
