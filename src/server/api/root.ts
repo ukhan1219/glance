@@ -10,6 +10,7 @@ import { polygonRouter } from './routers/polygon';
 export const appRouter = createTRPCRouter({
   post: postRouter,
   // gemini: geminiRouter, 
+  // coinbase:  coinbaseRouter,
   plaid: plaidRouter,
   polygon: polygonRouter,
 });
