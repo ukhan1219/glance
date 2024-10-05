@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import PlaidLink from "../_components/PlaidLink";
+import StockPrices from '../_components/StockPrices';
 import Chart from "chart.js/auto";
 
 const NewPage = () => {
@@ -158,6 +159,11 @@ const NewPage = () => {
             <p className="fira-sans-regular">Money Invested:</p>
           </div>
         </div>
+      </div>
+      
+      {/* **Integrated StockPrices Component** */}
+      <div className="bg-[#292464] text-white p-5 mt-7">
+        <StockPrices />
       </div>
     </div>
   );
