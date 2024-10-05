@@ -22,7 +22,7 @@ const NewPage = () => {
           <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
             {/* Content for right div */}
             <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Most Spent:</p>
+              <p className="fira-sans-regular">Most Spent:</p>
             </div>
           </div>
         </div>
@@ -33,15 +33,22 @@ const NewPage = () => {
           <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
             {/* Content for left div */}
             <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Most Invested:</p>
+              <p className="fira-sans-regular">Most Invested:</p>
             </div>
           </div>
 
           {/* Right Foreground Div */}
           <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
-            {/* Content for right div */}
+            {/* Centered Connect Crypto Brokerage Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="bg-[#292464] text-white px-4 py-2 rounded-lg">
+                Connect Crypto Brokerage:
+              </button>
+            </div>
+
+            {/* Bottom-left Holdings text */}
             <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Holdings:</p>
+              <p className="fira-sans-regular">Holdings:</p>
             </div>
           </div>
         </div>
