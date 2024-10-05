@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 /* This is the main text font for everything that isnt the word Glance*/
+
 body {
     font-family: 'Fira Sans', sans-serif; 
   }
