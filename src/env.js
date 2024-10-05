@@ -1,3 +1,7 @@
+// TODO: THIS IS WHERE WE WILL IMPORT ENV VARIABLES SO THAT THEY CAN BE USED ACROSS THE APPLICATION (APIS AND WHATNOT) 
+
+
+
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 

@@ -1,3 +1,7 @@
+// TODO: THIS IS WHERE WE WILL DEFINE AUTHENTICATION PROVIDERS THIS WILL BE CHANGED 
+
+
+
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import {
   getServerSession,
@@ -6,6 +10,8 @@ import {
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
+// import CredentialsProvider from "next-auth/providers/credentials"
+// may need (used to sign in locally without using oauth) (5:00) (https://www.youtube.com/watch?v=AbUVY16P4Ys)
 
 import { env } from "~/env";
 import { db } from "~/server/db";

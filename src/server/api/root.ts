@@ -1,3 +1,7 @@
+// TODO: THIS IS WHERE WE WILL ADD ROUTERS FROM THE FOLDER RIGHT ABOVE IT SO THAT WE CAN USE IT IN THE FRONTEND THIS WILL BE CHANGED 
+
+
+
 import { postRouter } from "~/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 

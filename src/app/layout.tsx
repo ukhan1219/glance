@@ -1,3 +1,7 @@
+// TODO: THIS IS OUR LAYOUT PAGE MEANT FOR SEO AND LAYOUT OF THE MAIN PAGES, THIS WILL BE CHANGED 
+
+
+
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";

@@ -1,3 +1,11 @@
+// TODO: THIS IS OUR MAIN PAGE ALSO KNOWN AS INDEX.HTML, THIS IS WHERE THE USER WILL LAND ON, THIS WILL BE CHANGED 
+// https://www.youtube.com/watch?v=AbUVY16P4Ys auth tut (15:00)
+// https://www.youtube.com/watch?v=2skJTEzFCsM create signin page auth tut
+// https://www.youtube.com/watch?v=-xulrXLrp7E plaid api
+// https://docs.cdp.coinbase.com/exchange/reference coinbase api
+
+
+
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
