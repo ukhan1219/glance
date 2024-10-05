@@ -17,9 +17,16 @@ const NotAuthorizedNavBar = () => {
 
         {/* Insight and dash buttons */}
         <div className="flex gap-8 items-center"> 
-          <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-            About
-          </button>
+          <Link href="/insights">
+            <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+              Insights
+            </button>
+          </Link>
+          <Link href="/dashboards">
+            <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+              Dashboards
+            </button>
+          </Link>
           <Link href="/signIn">
             <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
               Sign In
