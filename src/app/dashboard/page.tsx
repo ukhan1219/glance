@@ -1,13 +1,16 @@
 import React from "react";
-
+import AuthorizedNavBar from "../_components/authorizedNavBar"; 
+import { HydrateClient } from "~/trpc/server";
 const NewPage = () => {
   return (
-    <div style={{ backgroundColor: "#292464", minHeight: "100vh", color: "#fff" }}>
-      <h1>Hello world!</h1>
-      <p></p>
+    <HydrateClient>
+      <div style={{ backgroundColor: "#292464", minHeight: "100vh", color: "#fff", padding: "20px" }}>
+      <AuthorizedNavBar>
+        
+      </AuthorizedNavBar>
     </div>
+    </HydrateClient>
   );
 };
 
 export default NewPage;
-
