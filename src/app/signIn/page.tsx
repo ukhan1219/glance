@@ -1,6 +1,6 @@
 import { getServerAuthSession } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
-import { GoogleSignInButton, DiscordSignInButton} from  "~/app/_components/authButtons";
+import { GoogleSignInButton, DiscordSignInButton, CoinbaseSignInButton} from  "~/app/_components/authButtons";
 
 export default async function SignInPage() {
 
@@ -12,7 +12,7 @@ export default async function SignInPage() {
                     <h1 className="mt-5 mb-4 text-4xl font-bold">Sign In</h1>
                     <GoogleSignInButton/>
                     <DiscordSignInButton/>
-
+                    <CoinbaseSignInButton/>
                 </div>
 
             </div>
