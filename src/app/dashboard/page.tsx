@@ -12,7 +12,14 @@ const NewPage = () => {
         <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh]">
           {/* Left Foreground Div */}
           <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
-            {/* Content for left div */}
+            {/* Centered Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="bg-[#292464] text-white px-4 py-2 rounded-lg">
+                Connect Bank:
+              </button>
+            </div>
+
+            {/* Bottom-left Balance text */}
             <div className="absolute bottom-0 left-0 p-2">
               <p className="fira-sans-regular">Balance:</p>
             </div>
@@ -20,9 +27,8 @@ const NewPage = () => {
 
           {/* Right Foreground Div */}
           <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
-            {/* Content for right div */}
             <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Spending:</p>
+              <p className="fira-sans-regular">Spending:</p>
             </div>
           </div>
         </div>
@@ -31,17 +37,23 @@ const NewPage = () => {
         <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh] mt-7">
           {/* Left Foreground Div */}
           <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
-            {/* Content for left div */}
             <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Market Info:</p>
+              <p className="fira-sans-regular">Market Info:</p>
             </div>
           </div>
 
           {/* Right Foreground Div */}
           <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
-            {/* Content for right div */}
+            {/* Centered Connect Brokerage Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="bg-[#292464] text-white px-4 py-2 rounded-lg">
+                Connect Brokerage:
+              </button>
+            </div>
+
+            {/* Bottom-left Money Invested text */}
             <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Money Invested:</p>
+              <p className="fira-sans-regular">Money Invested:</p>
             </div>
           </div>
         </div>
