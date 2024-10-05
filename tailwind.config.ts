@@ -10,6 +10,7 @@ export default {
       },
       colors: {
         'site-background': '#292464',
+        'site-foreground': '#2e3058',
       },
     },
   },
