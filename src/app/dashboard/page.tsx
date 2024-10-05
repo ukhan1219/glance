@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect } from "react";
 import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
@@ -32,22 +31,25 @@ const NewPage = () => {
       <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh]">
         {/* Left Foreground Div */}
         <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
-          {/* Centered Button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            {publicToken === null ? (
-              <button
-                className="bg-[#292464] text-white px-4 py-2 rounded-lg"
-                onClick={handleConnectBank} // Trigger the PlaidLink flow
-              >
-                Connect A Bank With Plaid
-              </button>
-            ) : null}
-          </div>
+          {/* Button at the Top Center */}
+          <div className="flex justify-start items-start mt-0">
+  {publicToken === null ? (
+    <button
+      className="bg-[#292464] text-white px-4 py-2 rounded-lg"
+      onClick={handleConnectBank} // Trigger the PlaidLink flow
+    >
+      Connect A Bank With Plaid
+    </button>
+  ) : null}
+</div>
 
-          {/* Bottom-left Balance text */}
-          <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Balance: {balance || "N/A"}</p>
-          </div>
+          {/* Centered Balance text, moved up */}
+<div className="absolute inset-0 flex items-center justify-center p-2" style={{ top: '20%' }}>
+  <p className="fira-sans-regular text-4xl font-bold">
+    Balance: <span className="text-green-500">${balance || "N/A"}</span>
+  </p>
+</div>
+
         </div>
 
         {/* Right Foreground Div */}
