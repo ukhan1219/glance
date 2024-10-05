@@ -39,9 +39,9 @@ function PlaidAuthentication({
           const startDateString = startDate.toISOString().split("T")[0];
 
           getTransactions({
-              accessToken,
-              startDate: startDateString,
-              endDate,
+            accessToken,
+            startDate: startDateString ?? '',  // Ensure it's a string
+            endDate: endDate ?? '',  // Ensure it's a string
           });
       }
   }, [dataPub, getAccountBalance, getTransactions]);
@@ -110,8 +110,8 @@ const PlaidLink = ({
 
   useEffect(() => {
     if (onOpen && ready) {
-      onOpen(open, ready);
-    }
+        onOpen(open as () => void, ready);
+      }
   }, [onOpen, open, ready]);
 
   return publicToken ? (
