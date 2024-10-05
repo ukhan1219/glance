@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <div className="bg-site-background min-h-screen text-white p-10">
+      <div className="bg-site-background min-h-screen text-white">
         <NotAuthorizedNavBar />
         <div className="flex justify-end">
           {/* Text Section */}
