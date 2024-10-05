@@ -27,7 +27,7 @@ export default async function Home() {
 
         {/* Right Section - Logo Container (5/12 of the screen) */}
         <div className="w-5/12 flex items-center justify-center">
-          <div className="bg-site-foreground w-3/4 h-1/2 rounded-lg flex items-center justify-center p-10">
+          <div className="bg-site-foreground w-3/4 h-1/2 rounded-lg flex items-center justify-center p-10 shadow-md">
             {/* Logo Image */}
             <Image src={glancePNG} alt="Logo" className="w-full h-auto" />
           </div>
