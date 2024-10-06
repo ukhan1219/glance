@@ -6,6 +6,7 @@ import { signOut } from "next-auth/react";
 const NotAuthorizedNavBar = ({ session }: { session: any }) => {
   // Handle client-side signout
   const handleLogout = () => {
+    localStorage.clear();
     signOut({ callbackUrl: "/" });
   };
 
