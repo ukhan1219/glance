@@ -2,7 +2,7 @@
 
 import { getServerAuthSession } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
-import { GoogleSignInButton, DiscordSignInButton, CoinbaseSignInButton } from "~/app/_components/authButtons";
+import { GoogleSignInButton, DiscordSignInButton } from "~/app/_components/authButtons";
 import { redirect } from "next/navigation";
 
 export default async function SignInPage() {
@@ -21,7 +21,6 @@ export default async function SignInPage() {
                     {/* Pass the callbackUrl to redirect back to preDash after successful sign-in */}
                     <GoogleSignInButton callbackUrl="/preDash" />
                     <DiscordSignInButton callbackUrl="/preDash" />
-                    <CoinbaseSignInButton callbackUrl="/preDash" />
                 </div>
             </div>
         </HydrateClient>

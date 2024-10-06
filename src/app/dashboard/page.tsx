@@ -202,17 +202,17 @@ export default function DashboardPage() {
 
             {/* Chart Container */}
             <div className="rounded-lg p-0 md:p-0 overflow-hidden">
-            <div className="absolute top-0 left-0 w-full flex justify-center p-2">
+              <div className="absolute top-0 left-0 w-full flex justify-center p-2">
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"></dt>
                   <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
                 </dl>
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-          
+
                   </dt>
                   <dd className="leading-none text-xl font-bold text-red-600 dark:text-red-500">
-                   
+
                   </dd>
                 </dl>
               </div>
@@ -221,6 +221,7 @@ export default function DashboardPage() {
               <div className="relative h-48 w-full flex justify-center items-center overflow-hidden">
   <canvas id="pie-chart"></canvas>
 </div>
+
 
             </div>
           </div>
@@ -243,19 +244,11 @@ export default function DashboardPage() {
 
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-full h-[115%] rounded-lg relative p-10">
-          {/* Centered Connect Brokerage Button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-          </div>
-
           {/* Bottom-left Money Invested text */}
-          <div className="bg-site-foreground absolute bottom-0 left-0 p-2 flex items-center justify-center h-full">
-            <div>
-              <p className="bg-site-foreground fira-sans-regular">Personalized savings recommendations:</p>
-              <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
+          <div className="absolute bottom-0 left-0 p-2 flex flex-col space-y-2">
+            <p className="bg-site-foreground fira-sans-regular">Personalized savings recommendations:</p>
             </div>
-          </div>
-
-          {/* Integrated StockPrices Component */}
+            <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
         </div>
       </div>
     </div>
