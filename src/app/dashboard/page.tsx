@@ -92,13 +92,14 @@ export default function DashboardPage() {
           const categoryData: { [key: string]: number } = {};
 
           transactions.forEach((transaction) => {
-            const category = transaction.category[0] || "Uncategorized";
+            const category = transaction.category && transaction.category[0] ? transaction.category[0] : "Uncategorized";
             if (categoryData[category]) {
               categoryData[category] += transaction.amount;
             } else {
               categoryData[category] = transaction.amount;
             }
           });
+
           console.log(transactions);
           const labels = Object.keys(categoryData);
           const data = Object.values(categoryData);
@@ -181,7 +182,6 @@ export default function DashboardPage() {
               ))}
             </ul>
           </div>
-
           {/* Button for Plaid link */}
           {publicToken === null && (
             <div className="absolute bottom-5 left-5">
@@ -198,34 +198,32 @@ export default function DashboardPage() {
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
           <div className="justify-center left-0 p-2">
-            <p className="fira-sans-regular">Spending:</p>
 
             {/* Chart Container */}
-            <div className="rounded-lg p-2 md:p-4 overflow-hidden">
-              <div className="grid grid-cols-2 py-2">
+            <div className="rounded-lg p-0 md:p-0 overflow-hidden">
+            <div className="absolute top-0 left-0 w-full flex justify-center p-2">
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"></dt>
                   <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
                 </dl>
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-                    Expense
+          
                   </dt>
                   <dd className="leading-none text-xl font-bold text-red-600 dark:text-red-500">
-                    ${totalExpenses.toFixed(2)} {/* Display total expenses dynamically */}
+                   
                   </dd>
                 </dl>
               </div>
 
               {/* Chart.js canvas */}
-              <div className="relative h-48 w-full">
-                <canvas id="pie-chart"></canvas>
-              </div>
+              <div className="relative h-72 w-full flex justify-center items-start">
+  <canvas id="pie-chart"></canvas>
+</div>
             </div>
           </div>
         </div>
       </div>
-
       {/* Render the PlaidLink component */}
       <PlaidLink
         onOpen={(open, ready) => {
@@ -240,7 +238,6 @@ export default function DashboardPage() {
       {/* Second Row */}
       <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh] mt-7">
         {/* Left Foreground Div */}
-
 
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-full h-[115%] rounded-lg relative p-10">
@@ -257,6 +254,6 @@ export default function DashboardPage() {
           </div>
           </div>
         </div>
-      </div> 
+      </div>
   );
 }
