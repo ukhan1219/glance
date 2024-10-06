@@ -11,65 +11,68 @@ const NotAuthorizedNavBar = ({ session }: { session: any }) => {
   };
 
   return (
-    <div className="bg-[#292464] text-white p-5">
-      <title>Glance</title>
+    <div className="bg-[#292464] p-5">
+      <div className="text-[#e5cfa2]">
+        <title className="text-[#e5cfa2]">Glance</title>
+      </div>
+      <div className="text-white">
+        <div className="flex justify-between items-center">
+          {/* Left Side - Title and Welcome Message */}
+          <div>
+            <Link href="/">
+              <h1
+                className="manrope-custom"
+                style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%", color: "#e5cfa2" }}
+              >
+                Glance
+              </h1>
+            </Link>
+          </div>
 
-      <div className="flex justify-between items-center">
-        {/* Left Side - Title and Welcome Message */}
-        <div>
-          <Link href="/">
-            <h1
-              className="manrope-custom"
-              style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%" }}
-            >
-              Glance
-            </h1>
-          </Link>
-        </div>
-
-        {/* Insight and dash buttons */}
-        <div className="flex gap-8 items-center">
-          <Link href="/preInsight">
-            <button
-              className="fira-sans-regular"
-              style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-            >
-              Insights
-            </button>
-          </Link>
-          <Link href="/preDash">
-            <button
-              className="fira-sans-regular"
-              style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-            >
-              Dashboards
-            </button>
-          </Link>
-
-          {/* Conditionally render sign-in or logout button based on session status */}
-          {session ? (
-            <button
-              onClick={handleLogout}
-              className="fira-sans-regular"
-              style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-            >
-              Logout
-            </button>
-          ) : (
-            <Link href="/signIn">
+          {/* Insight and dash buttons */}
+          <div className="flex gap-8 items-center">
+            <Link href="/preInsight">
               <button
                 className="fira-sans-regular"
                 style={{ fontSize: "1.5rem", fontWeight: "bold" }}
               >
-                Sign In
+                Insights
               </button>
             </Link>
-          )}
-        </div>
-      </div>
+            <Link href="/preDash">
+              <button
+                className="fira-sans-regular"
+                style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+              >
+                Dashboards
+              </button>
+            </Link>
 
-      {/* Divider Line */}
-      <div className="h-px bg-white mt-2 w-full"></div>
+            {/* Conditionally render sign-in or logout button based on session status */}
+            {session ? (
+              <button
+                onClick={handleLogout}
+                className="fira-sans-regular"
+                style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+              >
+                Logout
+              </button>
+            ) : (
+              <Link href="/signIn">
+                <button
+                  className="fira-sans-regular"
+                  style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                >
+                  Sign In
+                </button>
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Divider Line */}
+        <div className="h-px bg-white mt-2 w-full"></div>
+      </div>
     </div>
   );
 };

@@ -28,6 +28,23 @@ body {
     font-weight: bold;
   }
   
+  .neumorphic-table {
+    background: #292464;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+  
+  .neumorphic-table th {
+    padding: 12px;
+    background-color: #32307a;
+  }
+  
+  .neumorphic-table td {
+    padding: 12px;
+    background-color: #2e2b77;
+  }
+  
   
 
   /* hi  */
