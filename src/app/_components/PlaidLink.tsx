@@ -49,6 +49,7 @@ function PlaidAuthentication({
   useEffect(() => {
       if (dataTransactions) {
           const { transactions } = dataTransactions;
+          console.log('Transactions:', transactions);
           setTransactions(transactions); // Make sure this function is called
       }
   }, [dataTransactions, setTransactions]);

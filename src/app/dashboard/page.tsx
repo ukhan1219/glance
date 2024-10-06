@@ -86,16 +86,18 @@ const NewPage = () => {
           </div>
 
           {/* Transactions rendering */}
-          <div className="mt-4">
-            <h2 className="text-xl font-bold">Recent Transactions</h2>
-            <ul>
-              {transactions.map((transaction, index) => (
-                <li key={index}>
-                  {transaction.name}: {transaction.amount} {transaction.currency}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="mb-4">
+  <h2 className="text-2xl font-bold">Recent Transactions</h2>
+        <ul>
+          {transactions.map((transaction, index) => (
+            <li key={index}>
+              {transaction.name}: 
+              <span className="text-red-500"> {transaction.amount} </span> {transaction.currency}
+            </li>
+          ))}
+        </ul>
+      </div>
+
         </div>
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
