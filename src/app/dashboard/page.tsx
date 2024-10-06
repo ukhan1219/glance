@@ -133,6 +133,7 @@ export default function DashboardPage() {
             },
             options: {
               responsive: true,
+              maintainAspectRatio: false,
             },
           });
         }
@@ -217,9 +218,10 @@ export default function DashboardPage() {
               </div>
 
               {/* Chart.js canvas */}
-              <div className="relative h-72 w-full flex justify-center items-start">
+              <div className="relative h-48 w-full flex justify-center items-center overflow-hidden">
   <canvas id="pie-chart"></canvas>
 </div>
+
             </div>
           </div>
         </div>
