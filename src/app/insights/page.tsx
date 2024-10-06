@@ -38,9 +38,9 @@ export default function InsightsPage() {
   return (
     <div className="bg-site-background min-h-screen text-white">
       {/* First Row */}
-      <div className="bg-site-background text-white p-5 flex space-x-5 h-[35vh]">
+      <div className=" text-white p-5 flex space-x-5 h-[35vh]">
         {/* Left Foreground Div */}
-        <div className="bg-site-foreground w-1/3 h-[250%] rounded-lg relative p-10">
+        <div className="bg-site-foreground w-3/5 h-[250%] rounded-lg relative p-10">
           {/* Stock Screener Content */}
           <StockPrices setInvestments={setInvestments} /> {/* Pass setInvestments */}
           
@@ -51,12 +51,12 @@ export default function InsightsPage() {
         </div>
 
         {/* Right Foreground Div */}
-        <div className="bg-site-foreground fira-sans-regular w-2/3 h-[250%] rounded-lg relative p-10">
+        <div className="bg-site-foreground fira-sans-regular w-2/5 h-[250%] rounded-lg relative p-10">
           {/* Personalized investing news */}
           <div className="absolute bottom-0 left-0 p-2">
             <p className="fira-sans-regular">Personalized investing news:</p>
             </div>
-            <div>
+            <div className="text-m">
               {personalizedNews ? (
                 <p>{personalizedNews}</p>
               ) : (
