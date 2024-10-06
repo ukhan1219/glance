@@ -1,44 +1,69 @@
+"use client"; // Mark this as a client-side component
 import React from "react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
-const NotAuthorizedNavBar = () => {
+const NotAuthorizedNavBar = ({ session }: { session: any }) => {
+  // Handle client-side signout
+  const handleLogout = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
   return (
     <div className="bg-[#292464] text-white p-5">
-      <title>
-        Glance
-      </title>
+      <title>Glance</title>
 
       <div className="flex justify-between items-center">
         {/* Left Side - Title and Welcome Message */}
         <div>
           <Link href="/">
-            <h1 className="manrope-custom" style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%" }}>
+            <h1
+              className="manrope-custom"
+              style={{ fontSize: "4rem", fontWeight: "bold", marginTop: "0%" }}
+            >
               Glance
             </h1>
           </Link>
-          {/* let's work on the sign in/ welcome back after we get all the api's working */}
-          {/* <h2 className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "0%" }}>
-            Welcome back, 
-          </h2> */}
         </div>
 
         {/* Insight and dash buttons */}
-        <div className="flex gap-8 items-center"> 
-          <Link href="/insights">
-            <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+        <div className="flex gap-8 items-center">
+          <Link href="/preInsight">
+            <button
+              className="fira-sans-regular"
+              style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+            >
               Insights
             </button>
           </Link>
-          <Link href="/dashboard">
-            <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+          <Link href="/preDash">
+            <button
+              className="fira-sans-regular"
+              style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+            >
               Dashboards
             </button>
           </Link>
-          <Link href="/signIn">
-            <button className="fira-sans-regular" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-              Sign In
+
+          {/* Conditionally render sign-in or logout button based on session status */}
+          {session ? (
+            <button
+              onClick={handleLogout}
+              className="fira-sans-regular"
+              style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+            >
+              Logout
             </button>
-          </Link>
+          ) : (
+            <Link href="/signIn">
+              <button
+                className="fira-sans-regular"
+                style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+              >
+                Sign In
+              </button>
+            </Link>
+          )}
         </div>
       </div>
 

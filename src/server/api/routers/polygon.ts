@@ -1,6 +1,6 @@
 
 import { z } from 'zod';
-import { createTRPCRouter, publicProcedure } from '~/server/api/trpc';
+import { createTRPCRouter, protectedProcedure } from '~/server/api/trpc';
 import axios from 'axios';
 
 // Polygon.io API key from environment variables
@@ -11,7 +11,7 @@ const FIXED_TICKERS = ['$AAPL', '$TSLA', '$NVDA', '$BK', '$SPY'];
 
 // Define the tRPC router for Polygon operations
 export const polygonRouter = createTRPCRouter({
-  getLatestEODData: publicProcedure
+  getLatestEODData: protectedProcedure
     .mutation(async () => {
       // Function to sanitize tickers (remove '$' if present)
       const sanitizeTicker = (ticker: string) => ticker.replace(/^\$/, '');
