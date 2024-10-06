@@ -200,7 +200,7 @@ export default function DashboardPage() {
           <div className="justify-center left-0 p-2">
 
             {/* Chart Container */}
-            <div className="rounded-lg p-2 md:p-4 overflow-hidden">
+            <div className="rounded-lg p-0 md:p-0 overflow-hidden">
             <div className="absolute top-0 left-0 w-full flex justify-center p-2">
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"></dt>
@@ -208,16 +208,16 @@ export default function DashboardPage() {
                 </dl>
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-                    Expenses
+          
                   </dt>
                   <dd className="leading-none text-xl font-bold text-red-600 dark:text-red-500">
-                    ${totalExpenses.toFixed(2)} {/* Display total expenses dynamically */}
+                   
                   </dd>
                 </dl>
               </div>
 
               {/* Chart.js canvas */}
-              <div className="relative h-48 w-full flex justify-center items-center">
+              <div className="relative h-72 w-full flex justify-center items-start">
   <canvas id="pie-chart"></canvas>
 </div>
             </div>
