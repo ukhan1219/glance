@@ -51,7 +51,7 @@ export default function InsightsPage() {
         </div>
 
         {/* Right Foreground Div */}
-        <div className="bg-site-foreground w-2/3 h-[250%] rounded-lg relative p-10">
+        <div className="bg-site-foreground fira-sans-regular w-2/3 h-[250%] rounded-lg relative p-10">
           {/* Personalized investing news */}
           <div className="absolute bottom-0 left-0 p-2">
             <p className="fira-sans-regular">Personalized investing news:</p>
@@ -60,7 +60,7 @@ export default function InsightsPage() {
               {personalizedNews ? (
                 <p>{personalizedNews}</p>
               ) : (
-                <p>Loading personalized news...</p>
+                <p></p>
               )}
             </div>
           </div>
