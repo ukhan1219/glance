@@ -12,8 +12,9 @@ const NotAuthorizedNavBar = ({ session }: { session: any }) => {
 
   return (
     <div className="bg-[#292464] text-white p-5">
-      <title>Glance</title>
-
+      <div>
+      <title className="text-[#E5CFA2]">Glance</title>
+      </div>
       <div className="flex justify-between items-center">
         {/* Left Side - Title and Welcome Message */}
         <div>
@@ -70,7 +71,7 @@ const NotAuthorizedNavBar = ({ session }: { session: any }) => {
 
       {/* Divider Line */}
       <div className="h-px bg-white mt-2 w-full"></div>
-    </div>
+      </div>
   );
 };
 
