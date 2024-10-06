@@ -138,7 +138,7 @@ export default function DashboardPage() {
           });
         }
       }
-    }, 1000); // Add a small delay
+    }, 500); // Add a small delay
 
     return () => {
       clearTimeout(timer);
@@ -167,22 +167,23 @@ export default function DashboardPage() {
           {/* Balance at the Top Left */}
           <div className="absolute top-5 left-5">
             <p className="fira-sans-regular text-4xl font-bold">
-              <span className="text-green-400 ml-4">${balance || "N/A"}</span>
+              <span className="text-green-400 ml-4 fira-sans-regular">${balance || "N/A"}</span>
             </p>
           </div>
 
           {/* Transactions rendering directly under the balance */}
-          <div className="mt-5"> {/* Reduced spacing */}
-            <h2 className="text-2xl font-bold">Recent Transactions</h2>
-            <ul>
-              {transactions.map((transaction, index) => (
-                <li key={index}>
-                  {transaction.merchantName}:
-                  <span className="text-red-500"> ${transaction.amount} </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="mt-5"> 
+          <h2 className="text-2xl fira-sans-regular font-bold">Recent Transactions</h2>
+          <ul>
+            {transactions.map((transaction, index) => (
+              <li key={index} className="fira-sans-regular">
+                {transaction.merchantName}:
+                <span className="text-red-500"> ${transaction.amount} </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
           {/* Button for Plaid link */}
           {publicToken === null && (
             <div className="absolute bottom-5 left-5">
@@ -204,11 +205,11 @@ export default function DashboardPage() {
             <div className="rounded-lg p-0 md:p-0 overflow-hidden">
               <div className="absolute top-0 left-0 w-full flex justify-center p-2">
                 <dl>
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"></dt>
+                  <dt className="text-base font-normal text-white dark:text-white pb-1"></dt>
                   <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
                 </dl>
                 <dl>
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
+                  <dt className="text-base font-normal text-white dark:text-white pb-1">
 
                   </dt>
                   <dd className="leading-none text-xl font-bold text-red-600 dark:text-red-500">
