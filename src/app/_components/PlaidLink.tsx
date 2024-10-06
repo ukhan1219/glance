@@ -16,6 +16,7 @@ function PlaidAuthentication({ publicToken, setBalance, setTransactions }: Plaid
   const { mutate: getAccountBalance, data: dataBalance, error: errorBalance } = api.plaid.getAccountBalance.useMutation();
   const { mutate: getTransactions, data: dataTransactions, error: errorTransactions } = api.plaid.getTransactions.useMutation();
 
+  
   useEffect(() => {
     async function fetchData() {
       exchangePublicToken({ publicToken });

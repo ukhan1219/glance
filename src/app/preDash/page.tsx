@@ -11,6 +11,7 @@ export default async function PreDashPage() {
     redirect("/dashboard");
   }
 
+  
   // If the user is not authenticated, redirect to the sign-in page
   redirect("/signIn?callbackUrl=/preDash");
 

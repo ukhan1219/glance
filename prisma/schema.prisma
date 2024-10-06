@@ -5,6 +5,7 @@ generator client {
     provider = "prisma-client-js"
 }
 
+
 datasource db {
     provider = "postgresql"
     // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below

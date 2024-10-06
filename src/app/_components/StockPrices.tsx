@@ -11,6 +11,7 @@ interface EODData {
   volume: number;
 }
 
+
 const StockPrices = ({ setInvestments }: { setInvestments: (investments: string) => void }) => {
   const [eodData, setEODData] = useState<EODData[] | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

@@ -39,3 +39,4 @@ export function DiscordSignInButton({ callbackUrl = "/preDash" }: { callbackUrl?
         </button>
     );
 }
+

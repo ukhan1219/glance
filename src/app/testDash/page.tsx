@@ -15,6 +15,7 @@ const NewPage = () => {
         chartRef.current.destroy();
       }
 
+      
       const ctx = chartCanvas.getContext("2d");
       if (ctx) {
         chartRef.current = new Chart<"pie", number[], string>(ctx, {

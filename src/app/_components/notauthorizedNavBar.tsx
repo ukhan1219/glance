@@ -10,6 +10,7 @@ const NotAuthorizedNavBar = ({ session }: { session: any }) => {
     signOut({ callbackUrl: "/" });
   };
 
+  
   return (
     <div className="bg-[#292464] p-5">
       <div className="text-[#e5cfa2]">

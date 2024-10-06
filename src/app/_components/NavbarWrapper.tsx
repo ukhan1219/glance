@@ -8,3 +8,4 @@ export default async function NavbarWrapper() {
   // Pass the session down as a prop
   return <NotAuthorizedNavBar session={session} />;
 }
+

@@ -9,6 +9,7 @@ export default function InsightsPage() {
   const [investments, setInvestments] = useState<string | null>(() => localStorage.getItem("investments"));
   const [personalizedNews, setPersonalizedNews] = useState<string | null>(() => localStorage.getItem("personalizedNews"));
 
+  
   const { mutate: getPersonalizedNews } = api.gemini.getPersonalizedNews.useMutation({
     onSuccess: (data) => {
       console.log("Received personalized news:", data);

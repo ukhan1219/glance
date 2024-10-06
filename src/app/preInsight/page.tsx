@@ -11,6 +11,7 @@ export default async function PreInsightPage() {
     redirect("/insights");
   }
 
+  
   // If the user is not authenticated, redirect to the sign-in page
   redirect("/signIn?callbackUrl=/preInsight");
 
