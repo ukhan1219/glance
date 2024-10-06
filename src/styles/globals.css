@@ -28,6 +28,28 @@ body {
     font-weight: bold;
   }
   
+  .neumorphic-table {
+    background: #292464;
+    border-radius: 10px;
+    box-shadow: 9px 9px 16px #212053, -9px -9px 16px #312e75;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+  
+  .neumorphic-table th {
+    padding: 12px;
+    background-color: #32307a;
+    box-shadow: inset 5px 5px 10px #211f55, inset -5px -5px 10px #3f3ccf;
+    border-radius: 10px;
+  }
+  
+  .neumorphic-table td {
+    padding: 12px;
+    background-color: #2e2b77;
+    box-shadow: inset 5px 5px 10px #211f55, inset -5px -5px 10px #3f3ccf;
+    border-radius: 10px;
+  }
+  
   
 
   /* hi  */
