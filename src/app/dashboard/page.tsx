@@ -92,13 +92,14 @@ export default function DashboardPage() {
           const categoryData: { [key: string]: number } = {};
 
           transactions.forEach((transaction) => {
-            const category = transaction.category[0] || "Uncategorized";
+            const category = transaction.category && transaction.category[0] ? transaction.category[0] : "Uncategorized";
             if (categoryData[category]) {
               categoryData[category] += transaction.amount;
             } else {
               categoryData[category] = transaction.amount;
             }
           });
+
           console.log(transactions);
           const labels = Object.keys(categoryData);
           const data = Object.values(categoryData);
@@ -181,7 +182,6 @@ export default function DashboardPage() {
               ))}
             </ul>
           </div>
-
           {/* Button for Plaid link */}
           {publicToken === null && (
             <div className="absolute bottom-5 left-5">
@@ -225,7 +225,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-
       {/* Render the PlaidLink component */}
       <PlaidLink
         onOpen={(open, ready) => {
@@ -241,7 +240,6 @@ export default function DashboardPage() {
       <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh] mt-7">
         {/* Left Foreground Div */}
 
-
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-full h-[115%] rounded-lg relative p-10">
           {/* Centered Connect Brokerage Button */}
@@ -256,10 +254,9 @@ export default function DashboardPage() {
             </div>
           </div>
 
-
           {/* Integrated StockPrices Component */}
-          </div>
         </div>
-      </div> 
+      </div>
+    </div>
   );
 }
