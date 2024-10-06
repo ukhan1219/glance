@@ -6,4 +6,3 @@ export interface Transaction {
     date: string;
     merchantName: string;
   }
-  
