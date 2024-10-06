@@ -5,9 +5,10 @@ import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import PlaidLink from "../_components/PlaidLink";
 import StockPrices from '../_components/StockPrices';
 import Chart from "chart.js/auto";
-import { Transaction } from '../types';
+import { Transaction } from '../_components/types';
 import { getServerAuthSession } from "~/server/auth";
 import { redirect } from "next/navigation";
+import { api } from '~/trpc/react';
 
 
 // Define the Transaction interface
@@ -27,6 +28,8 @@ export default function DashboardPage() {
   const [publicToken, setPublicToken] = useState<string | null>(null);
   const chartRef = useRef<Chart<"pie", number[], string> | null>(null);
 
+  const getAnalytics = api.gemini.getAnalytics.useMutation();
+
   // Calculate total expenses by summing up all the transaction amounts
   const totalExpenses = transactions.reduce((acc, transaction) => {
     return acc + transaction.amount;
@@ -34,6 +37,15 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (transactions.length === 0) return;
+
+    const transactionSummary = transactions
+      .map(transaction => `${transaction.merchantName}: $${transaction.amount} on ${transaction.date}, categorized as ${transaction.category}`)
+      .join(", ");
+
+    // Call the Gemini API to get analytics
+    getAnalytics.mutate({
+      transactions: transactionSummary
+    });
 
     const timer = setTimeout(() => {
       const chartCanvas = document.getElementById("pie-chart") as HTMLCanvasElement | null;
