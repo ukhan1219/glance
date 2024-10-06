@@ -255,9 +255,6 @@ export default function DashboardPage() {
               <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
             </div>
           </div>
-
-
-          {/* Integrated StockPrices Component */}
           </div>
         </div>
       </div> 
