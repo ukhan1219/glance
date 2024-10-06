@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <HydrateClient>
       <div className="bg-site-background min-h-screen text-white">
-        <NotAuthorizedNavBar />
+        {/* <NotAuthorizedNavBar /> */}
         <div className="flex justify-end">
           {/* Text Section */}
           <div className="w-7/12 p-10">
