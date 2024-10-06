@@ -38,7 +38,7 @@ const StockPrices = ({ setInvestments }: { setInvestments: (investments: string)
 
   return (
     <div className="p-5 bg-[#292464] rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 text-white">End of Day Stock Data</h2>
+      <h2 className="text-2xl font-bold mb-4 text-white">Watch List</h2>
 
       {isLoading ? (
         <p className="text-white">Loading...</p>
