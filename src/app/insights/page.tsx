@@ -1,12 +1,14 @@
 import React from "react";
 import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import { HydrateClient } from "~/trpc/server";
+import { getServerAuthSession } from "~/server/auth";
+import { redirect } from "next/navigation";
 
-const NewPage = () => {
+export default function InsightsPage() {
   return (
     <HydrateClient>
       <div className="bg-site-background min-h-screen text-white">
-        <NotAuthorizedNavBar />
+        {/* <NotAuthorizedNavBar /> */}
 
         {/* First Row */}
         <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh]">
@@ -57,4 +59,3 @@ const NewPage = () => {
   );
 };
 
-export default NewPage;

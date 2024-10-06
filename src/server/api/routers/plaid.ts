@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createTRPCRouter, publicProcedure } from '~/server/api/trpc';
+import { createTRPCRouter, protectedProcedure } from '~/server/api/trpc';
 import { Configuration, PlaidApi, PlaidEnvironments, CountryCode, Products} from 'plaid';
 
 // Configure the Plaid client
@@ -17,7 +17,7 @@ const plaidClient = new PlaidApi(configuration);
 
 // Define the tRPC router for Plaid operations
 export const plaidRouter = createTRPCRouter({
-  createLinkToken: publicProcedure
+  createLinkToken: protectedProcedure
     .input(z.object({ clientUserId: z.string() }))
     .mutation(async ({ input }) => {
       const { clientUserId } = input;
@@ -41,7 +41,7 @@ export const plaidRouter = createTRPCRouter({
         throw new Error('Failed to create link token');
       }
     }),
-  exchangePublicToken: publicProcedure
+  exchangePublicToken: protectedProcedure
     .input(z.object({ publicToken: z.string(), }))
     .mutation(async ({ input }) => {
       const { publicToken } = input;
@@ -64,7 +64,7 @@ export const plaidRouter = createTRPCRouter({
       }
     }),
 
-  getAccountBalance: publicProcedure
+  getAccountBalance: protectedProcedure
     .input(z.object({ accessToken: z.string() }))  // Input is the access token
     .mutation(async ({ input }) => {
       const { accessToken } = input;
@@ -83,7 +83,7 @@ export const plaidRouter = createTRPCRouter({
       }
     }),
 
-  syncTransactions: publicProcedure
+  syncTransactions: protectedProcedure
     .input(
       z.object({
         accessToken: z.string(),
@@ -130,7 +130,7 @@ export const plaidRouter = createTRPCRouter({
       }
     }),
 
-  getTransactions: publicProcedure
+  getTransactions: protectedProcedure
     .input(
       z.object({
         accessToken: z.string(),
@@ -164,4 +164,4 @@ export const plaidRouter = createTRPCRouter({
 });
 
 
-// getTransactions: publicProcedure
+// getTransactions: protectedProcedure

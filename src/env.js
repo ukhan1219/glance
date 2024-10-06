@@ -35,6 +35,8 @@ export const env = createEnv({
     COINBASE_CLIENT_ID: z.string(),
     COINBASE_CLIENT_SECRET: z.string(),
     POLYGON_API_KEY: z.string(),
+    GEMINI_CRYPTO_KEY: z.string(),
+    GEMINI_CRYPTO_SECRET: z.string(),
   },
 
   /**
@@ -68,6 +70,8 @@ export const env = createEnv({
     COINBASE_CLIENT_ID: process.env.COINBASE_CLIENT_ID,
     COINBASE_CLIENT_SECRET: process.env.COINBASE_CLIENT_SECRET,
     POLYGON_API_KEY: process.env.POLYGON_API_KEY,
+    GEMINI_CRYPTO_KEY: process.env.GEMINI_CRYPTO_KEY,
+    GEMINI_CRYPTO_SECRET: process.env.GEMINI_CRYPTO_SECRET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

@@ -107,8 +107,8 @@ const PlaidLink = ({ onOpen, onSuccess, setBalance, setTransactions }: PlaidLink
 
   useEffect(() => {
     if (onOpen && ready) {
-      onOpen(open, ready);
-    }
+        onOpen(open as () => void, ready);
+      }
   }, [onOpen, open, ready]);
 
   return publicToken ? (

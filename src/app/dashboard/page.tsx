@@ -6,6 +6,9 @@ import PlaidLink from "../_components/PlaidLink";
 import StockPrices from '../_components/StockPrices';  // Import StockPrices component
 import Chart from "chart.js/auto";
 import { Transaction } from '../types';
+import { getServerAuthSession } from "~/server/auth";
+import { redirect } from "next/navigation";
+
 
 // Define the Transaction interface
 interface Transaction {
@@ -15,7 +18,8 @@ interface Transaction {
   merchantName: string;
 }
 
-const NewPage = () => {
+export default function DashboardPage() {
+  
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
   const [balance, setBalance] = useState<string | null>(null);
@@ -112,7 +116,7 @@ const NewPage = () => {
 
   return (
     <div className="bg-site-background min-h-screen text-white">
-      <NotAuthorizedNavBar />
+      {/* <NotAuthorizedNavBar /> */}
       <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh]">
         <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
           <div className="flex justify-start items-start mt-0">
@@ -223,5 +227,3 @@ const NewPage = () => {
     </div>
   );
 };
-
-export default NewPage;
