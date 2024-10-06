@@ -251,7 +251,7 @@ export default function DashboardPage() {
           {/* Bottom-left Money Invested text */}
           <div className="bg-site-foreground absolute bottom-0 left-0 p-2 flex items-center justify-center h-full">
             <div>
-              <p className="bg-site-foreground fira-sans-regular">Personalized savings recommendations:</p>
+              <p className="bg-site-foreground fira-sans-regular absolute bottom-0 left-0 p-2">Personalized savings recommendations:</p>
               <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
             </div>
           </div>
