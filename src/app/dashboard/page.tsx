@@ -5,9 +5,10 @@ import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import PlaidLink from "../_components/PlaidLink";
 import StockPrices from '../_components/StockPrices';  // Import StockPrices component
 import Chart from "chart.js/auto";
-import { Transaction } from '../types';
+import { Transaction } from '../_components/types';
 import { getServerAuthSession } from "~/server/auth";
 import { redirect } from "next/navigation";
+import { api } from '~/trpc/react';
 
 
 // Define the Transaction interface
@@ -19,13 +20,16 @@ interface Transaction {
 }
 
 export default function DashboardPage() {
-  
+
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
   const [balance, setBalance] = useState<string | null>(null);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [publicToken, setPublicToken] = useState<string | null>(null);
+  const [savingsRec, setSavingsRec] = useState<string>("");
   const chartRef = useRef<Chart<"pie", number[], string> | null>(null);
+
+  const getAnalytics = api.gemini.getAnalytics.useMutation();
 
   // Calculate total expenses by summing up all the transaction amounts
   const totalExpenses = transactions.reduce((acc, transaction) => {
@@ -34,6 +38,22 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (transactions.length === 0) return;
+
+    const transactionSummary = transactions
+      .map(transaction => `${transaction.merchantName}: $${transaction.amount} on ${transaction.date}, categorized as ${transaction.category}`)
+      .join(", ");
+
+    // Call the Gemini API to get analytics
+    getAnalytics.mutate(
+      { transactions: transactionSummary },
+      {
+        onSuccess: (data) => {
+          if (data?.text) {
+            setSavingsRec(data.text);  // Update the state with the response from the API
+          }
+        },
+      }
+    );
 
     const timer = setTimeout(() => {
       const chartCanvas = document.getElementById("pie-chart") as HTMLCanvasElement | null;
@@ -59,7 +79,7 @@ export default function DashboardPage() {
           const labels = Object.keys(categoryData);
           const data = Object.values(categoryData);
 
-            chartRef.current = new Chart(ctx, {
+          chartRef.current = new Chart(ctx, {
             type: "pie",
             data: {
               labels,
@@ -141,7 +161,7 @@ export default function DashboardPage() {
             <ul>
               {transactions.map((transaction, index) => (
                 <li key={index}>
-                  {transaction.merchantName}: 
+                  {transaction.merchantName}:
                   <span className="text-red-500"> ${transaction.amount} </span>
                 </li>
               ))}
@@ -159,10 +179,10 @@ export default function DashboardPage() {
               <div className="grid grid-cols-2 py-2">
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-                    
+
                   </dt>
                   <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400">
-                    
+
                   </dd>
                 </dl>
                 <dl>
@@ -198,7 +218,7 @@ export default function DashboardPage() {
       {/* Second Row */}
       <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh] mt-7">
         {/* Left Foreground Div */}
-      
+
 
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-full h-[115%] rounded-lg relative p-10">
@@ -207,16 +227,17 @@ export default function DashboardPage() {
           </div>
 
           {/* Bottom-left Money Invested text */}
-          <div className="absolute bottom-0 left-0 p-2">
-            <p className="fira-sans-regular">Personalized savings recommendations:</p>
+          <div className="bg-site-foreground absolute bottom-0 left-0 p-2 flex items-center justify-center h-full">
+            <div>
+              <p className="fira-sans-regular">Personalized savings recommendations:</p>
+              <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
+            </div>
+          </div>
+
+          {/* Integrated StockPrices Component */}
+          <div className="bg-[#292464] text-white p-5 mt-7">
+            <StockPrices /> {/* This is where StockPrices component will display EOD stock data */}
           </div>
         </div>
-      </div>
-
-      {/* Integrated StockPrices Component */}
-      <div className="bg-[#292464] text-white p-5 mt-7">
-        <StockPrices /> {/* This is where StockPrices component will display EOD stock data */}
-      </div>
-    </div>
-  );
-};
+      </div> </div>)
+}
