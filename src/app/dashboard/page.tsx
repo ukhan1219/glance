@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import PlaidLink from "../_components/PlaidLink";
-import StockPrices from '../_components/StockPrices';
+import StockPrices from '../_components/StockPrices';  // Import StockPrices component
 import Chart from "chart.js/auto";
 import { Transaction } from '../types';
 
@@ -55,7 +55,7 @@ const NewPage = () => {
           const labels = Object.keys(categoryData);
           const data = Object.values(categoryData);
 
-          chartRef.current = new Chart(ctx, {
+            chartRef.current = new Chart(ctx, {
             type: "pie",
             data: {
               labels,
@@ -218,7 +218,7 @@ const NewPage = () => {
 
       {/* Integrated StockPrices Component */}
       <div className="bg-[#292464] text-white p-5 mt-7">
-        <StockPrices />
+        <StockPrices /> {/* This is where StockPrices component will display EOD stock data */}
       </div>
     </div>
   );
