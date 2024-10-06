@@ -160,27 +160,17 @@ export default function DashboardPage() {
 
   return (
     <div className="bg-site-background min-h-screen text-white">
-      {/* <NotAuthorizedNavBar /> */}
       <div className="bg-[#292464] text-white p-5 flex space-x-5 h-[35vh]">
         <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
-          <div className="flex justify-start items-start mt-0">
-            {publicToken === null ? (
-              <button
-                className="bg-[#292464] text-white px-4 py-2 rounded-lg"
-                onClick={handleConnectBank}
-              >
-                Connect A Bank With Plaid
-              </button>
-            ) : null}
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center p-2" style={{ top: '20%' }}>
+          {/* Balance at the Top Left */}
+          <div className="absolute top-5 left-5">
             <p className="fira-sans-regular text-4xl font-bold">
               <span className="text-green-400">${balance || "N/A"}</span>
             </p>
           </div>
 
-          {/* Transactions rendering */}
-          <div className="mb-4">
+          {/* Transactions rendering directly under the balance */}
+          <div className="mt-5"> {/* Reduced spacing */}
             <h2 className="text-2xl font-bold">Recent Transactions</h2>
             <ul>
               {transactions.map((transaction, index) => (
@@ -191,23 +181,31 @@ export default function DashboardPage() {
               ))}
             </ul>
           </div>
+
+          {/* Button for Plaid link */}
+          {publicToken === null && (
+            <div className="absolute bottom-5 left-5">
+              <button
+                className="bg-[#292464] text-white px-4 py-2 rounded-lg"
+                onClick={handleConnectBank}
+              >
+                Connect A Bank With Plaid
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
-          <div className="absolute bottom-0 left-0 p-2">
+          <div className="justify-center left-0 p-2">
             <p className="fira-sans-regular">Spending:</p>
 
             {/* Chart Container */}
             <div className="rounded-lg p-2 md:p-4 overflow-hidden">
               <div className="grid grid-cols-2 py-2">
                 <dl>
-                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-
-                  </dt>
-                  <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400">
-
-                  </dd>
+                  <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"></dt>
+                  <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
                 </dl>
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
@@ -257,6 +255,7 @@ export default function DashboardPage() {
               <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
             </div>
           </div>
+
 
           {/* Integrated StockPrices Component */}
           <div className="bg-[#292464] text-white p-5 mt-7">
