@@ -17,7 +17,6 @@ interface Transaction {
   date: string;
   merchantName: string;
 }
-
 export default function DashboardPage() {
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
