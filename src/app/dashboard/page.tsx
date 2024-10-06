@@ -5,13 +5,21 @@ import NotAuthorizedNavBar from "../_components/notauthorizedNavBar";
 import PlaidLink from "../_components/PlaidLink";
 import StockPrices from '../_components/StockPrices';
 import Chart from "chart.js/auto";
+import { Transaction } from '../types';
 
+// Define the Transaction interface
+interface Transaction {
+  amount: number;
+  category: string[];
+  date: string;
+  merchantName: string;
+}
 
 const NewPage = () => {
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
   const [balance, setBalance] = useState<string | null>(null);
-  const [transactions, setTransactions] = useState<any[]>([]); // State to store transactions
+  const [transactions, setTransactions] = useState<Transaction[]>([]); 
   const [publicToken, setPublicToken] = useState<string | null>(null);
   const chartRef = useRef<Chart<"pie", number[], string> | null>(null);
 
@@ -87,18 +95,18 @@ const NewPage = () => {
 
           {/* Transactions rendering */}
           <div className="mb-4">
-  <h2 className="text-2xl font-bold">Recent Transactions</h2>
-        <ul>
-          {transactions.map((transaction, index) => (
-            <li key={index}>
-              {transaction.name}: 
-              <span className="text-red-500"> {transaction.amount} </span> {transaction.currency}
-            </li>
-          ))}
-        </ul>
-      </div>
-
+            <h2 className="text-2xl font-bold">Recent Transactions</h2>
+            <ul>
+              {transactions.map((transaction, index) => (
+                <li key={index}>
+                  {transaction.merchantName}: 
+                  <span className="text-red-500"> ${transaction.amount} </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
           <div className="absolute bottom-0 left-0 p-2">
@@ -142,7 +150,7 @@ const NewPage = () => {
         }}
         onSuccess={handlePlaidSuccess}
         setBalance={setBalance}
-        setTransactions={setTransactions} // Ensure setTransactions is passed here
+        setTransactions={setTransactions} 
       />
 
       {/* Second Row */}
@@ -156,7 +164,6 @@ const NewPage = () => {
 
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
-          {/* Centered Connect Brokerage Button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <button className="bg-[#292464] text-white px-4 py-2 rounded-lg">
               Connect Brokerage:
@@ -169,13 +176,12 @@ const NewPage = () => {
           </div>
         </div>
       </div>
-      
-      {/* **Integrated StockPrices Component** */}
+
+      {/* Integrated StockPrices Component */}
       <div className="bg-[#292464] text-white p-5 mt-7">
         <StockPrices />
       </div>
     </div>
-
   );
 };
 
