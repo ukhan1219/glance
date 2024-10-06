@@ -165,7 +165,7 @@ export default function DashboardPage() {
           {/* Balance at the Top Left */}
           <div className="absolute top-5 left-5">
             <p className="fira-sans-regular text-4xl font-bold">
-              <span className="text-green-400">${balance || "N/A"}</span>
+              <span className="text-green-400 ml-4">${balance || "N/A"}</span>
             </p>
           </div>
 
