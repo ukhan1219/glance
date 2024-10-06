@@ -251,18 +251,15 @@ export default function DashboardPage() {
           {/* Bottom-left Money Invested text */}
           <div className="bg-site-foreground absolute bottom-0 left-0 p-2 flex items-center justify-center h-full">
             <div>
-              <p className="fira-sans-regular">Personalized savings recommendations:</p>
+              <p className="bg-site-foreground fira-sans-regular">Personalized savings recommendations:</p>
               <p className="fira-sans-regular text-l font-bold">{savingsRec}</p> {/* Display personalized recommendations here */}
             </div>
           </div>
 
 
           {/* Integrated StockPrices Component */}
-          <div className="bg-[#292464] text-white p-5 mt-7">
-            <StockPrices /> {/* This is where StockPrices component will display EOD stock data */}
           </div>
         </div>
       </div> 
-    </div>
   );
 }
