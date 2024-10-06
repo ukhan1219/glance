@@ -2,6 +2,7 @@ import { postRouter } from "~/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 import { plaidRouter } from "./routers/plaid";
 import { polygonRouter } from './routers/polygon';
+import { geminiCryptoRouter } from "./routers/geminiCrypto";
 /**
  * This is the primary router for your server.
  *
@@ -13,6 +14,7 @@ export const appRouter = createTRPCRouter({
   // coinbase:  coinbaseRouter,
   plaid: plaidRouter,
   polygon: polygonRouter,
+  geminiCrypto: geminiCryptoRouter,
 });
 
 // export type definition of API
