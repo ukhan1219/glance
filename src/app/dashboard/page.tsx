@@ -198,18 +198,17 @@ export default function DashboardPage() {
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-2/5 h-[115%] rounded-lg relative p-10">
           <div className="justify-center left-0 p-2">
-            <p className="fira-sans-regular">Spending:</p>
 
             {/* Chart Container */}
             <div className="rounded-lg p-2 md:p-4 overflow-hidden">
-              <div className="grid grid-cols-2 py-2">
+            <div className="absolute top-0 left-0 w-full flex justify-center p-2">
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"></dt>
                   <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
                 </dl>
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-                    Expense
+                    Expenses
                   </dt>
                   <dd className="leading-none text-xl font-bold text-red-600 dark:text-red-500">
                     ${totalExpenses.toFixed(2)} {/* Display total expenses dynamically */}
@@ -218,9 +217,9 @@ export default function DashboardPage() {
               </div>
 
               {/* Chart.js canvas */}
-              <div className="relative h-48 w-full">
-                <canvas id="pie-chart"></canvas>
-              </div>
+              <div className="relative h-48 w-full flex justify-center items-center">
+  <canvas id="pie-chart"></canvas>
+</div>
             </div>
           </div>
         </div>
