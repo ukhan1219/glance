@@ -19,46 +19,84 @@ const NewPage = () => {
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
   const [balance, setBalance] = useState<string | null>(null);
-  const [transactions, setTransactions] = useState<Transaction[]>([]); 
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [publicToken, setPublicToken] = useState<string | null>(null);
   const chartRef = useRef<Chart<"pie", number[], string> | null>(null);
 
+  // Calculate total expenses by summing up all the transaction amounts
+  const totalExpenses = transactions.reduce((acc, transaction) => {
+    return acc + transaction.amount;
+  }, 0);
+
   useEffect(() => {
-    const chartCanvas = document.getElementById("pie-chart") as HTMLCanvasElement | null;
+    if (transactions.length === 0) return;
 
-    if (chartCanvas) {
-      if (chartRef.current) {
-        chartRef.current.destroy();
-      }
+    const timer = setTimeout(() => {
+      const chartCanvas = document.getElementById("pie-chart") as HTMLCanvasElement | null;
 
-      const ctx = chartCanvas.getContext("2d");
-      if (ctx) {
-        chartRef.current = new Chart<"pie", number[], string>(ctx, {
-          type: "pie",
-          data: {
-            labels: ["Income", "Expense"],
-            datasets: [
-              {
-                data: [23635, 18230],
-                backgroundColor: ["rgba(75, 192, 192, 0.6)", "rgba(255, 99, 132, 0.6)"],
-                borderColor: ["rgba(75, 192, 192, 1)", "rgba(255, 99, 132, 1)"],
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-          },
-        });
+      if (chartCanvas) {
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+
+        const ctx = chartCanvas.getContext("2d");
+        if (ctx) {
+          const categoryData: { [key: string]: number } = {};
+
+          transactions.forEach((transaction) => {
+            const category = transaction.category[0] || "Uncategorized";
+            if (categoryData[category]) {
+              categoryData[category] += transaction.amount;
+            } else {
+              categoryData[category] = transaction.amount;
+            }
+          });
+
+          const labels = Object.keys(categoryData);
+          const data = Object.values(categoryData);
+
+          chartRef.current = new Chart(ctx, {
+            type: "pie",
+            data: {
+              labels,
+              datasets: [
+                {
+                  data,
+                  backgroundColor: [
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(255, 99, 132, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(153, 102, 255, 0.6)",
+                    "rgba(255, 159, 64, 0.6)",
+                  ],
+                  borderColor: [
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        }
       }
-    }
+    }, 1000); // Add a small delay
 
     return () => {
+      clearTimeout(timer);
       if (chartRef.current) {
         chartRef.current.destroy();
       }
     };
-  }, []);
+  }, [transactions]);
 
   const handleConnectBank = () => {
     if (openPlaidLink && isPlaidReady) {
@@ -117,10 +155,10 @@ const NewPage = () => {
               <div className="grid grid-cols-2 py-2">
                 <dl>
                   <dt className="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
-                    Income
+                    
                   </dt>
                   <dd className="leading-none text-xl font-bold text-green-500 dark:text-green-400">
-                    $23,635
+                    
                   </dd>
                 </dl>
                 <dl>
@@ -128,7 +166,7 @@ const NewPage = () => {
                     Expense
                   </dt>
                   <dd className="leading-none text-xl font-bold text-red-600 dark:text-red-500">
-                    -$18,230
+                    -${totalExpenses.toFixed(2)} {/* Display total expenses dynamically */}
                   </dd>
                 </dl>
               </div>
@@ -150,7 +188,7 @@ const NewPage = () => {
         }}
         onSuccess={handlePlaidSuccess}
         setBalance={setBalance}
-        setTransactions={setTransactions} 
+        setTransactions={setTransactions}
       />
 
       {/* Second Row */}
@@ -164,6 +202,7 @@ const NewPage = () => {
 
         {/* Right Foreground Div */}
         <div className="bg-site-foreground w-3/5 h-[115%] rounded-lg relative p-10">
+          {/* Centered Connect Brokerage Button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <button className="bg-[#292464] text-white px-4 py-2 rounded-lg">
               Connect Brokerage:
