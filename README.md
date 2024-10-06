@@ -16,3 +16,9 @@ Incorporating multiple difficult API's including polygon and plaid, very few mer
 Learned how easy using a framework makes it to create a program from scratch, we learned how to route API's, and how connecting some API's are much more difficult than others.
 ## What's next for Glance
 We will continue to work on this as we are both passionate about finance and making it easily accessible to all. We also have a strong interest in ML/AI technologies and we feel this project was able to highlight some of our skills and we hope you enjoy our product now and in the future with newer developments and updates. We will continue working on this and plan to expand our operations and feature-set in the future.
+
+
+## How to run:
+- `npm install`
+- `npm run db:push`
+- `npm run dev`
