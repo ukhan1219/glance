@@ -13,7 +13,7 @@ const geminiRouter = createTRPCRouter({
         }))
         .mutation(async ({ input }) => {
             try {
-                const prompt = `MAXIMUM 150 WORDS; DO NOT USE MARKDOWN FORMAT: Here are my recent transactions, I want you to  generate a summary of my spending habits: ${input.transactions}, and also mark the categories I spent the most money in and suggestions on how to budget myself better and save money. Keep it personalized, not generalized advice. `;
+                const prompt = `USE A MAXIMUM OF 125 WORDS; DO NOT USE MARKDOWN FORMAT: Here are my recent transactions, I want you to  generate a summary of my spending habits: ${input.transactions}, and also mark the categories I spent the most money in and suggestions on how to budget myself better and save money. Keep it personalized, not generalized advice. `;
                 const result = await model.generateContent(prompt);
                 return { text: result.response.text() };
             } catch (error) {
@@ -28,7 +28,7 @@ const geminiRouter = createTRPCRouter({
         }))
         .mutation(async ({ input }) => {
             try {
-                const prompt = `MAXIMUM 150 WORDS; DO NOT USE MARKDOWN FORMAT: Here are the companies I am currently invested in. ${input.investments}, I want you to generate a list of relevant news articles regarding them and offer suggestions for diversifying my investments or looking into other sectors with one other news article to broaden my horizons. `
+                const prompt = `USE A MAXIMUM OF 125 WORDS; DO NOT USE MARKDOWN FORMAT: Here are the companies I am currently invested in. ${input.investments}, I want you to generate a list of relevant news articles regarding them and offer suggestions for diversifying my investments or looking into other sectors with one other news article to broaden my horizons. `
                 const result = await model.generateContent(prompt);
                 return { text: result.response.text() };
             } catch (error) {
