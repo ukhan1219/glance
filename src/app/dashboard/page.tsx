@@ -10,7 +10,6 @@ import { getServerAuthSession } from "~/server/auth";
 import { redirect } from "next/navigation";
 import { api } from '~/trpc/react';
 
-
 // Define the Transaction interface
 interface Transaction {
   amount: number;
@@ -20,16 +19,41 @@ interface Transaction {
 }
 
 export default function DashboardPage() {
-
   const [openPlaidLink, setOpenPlaidLink] = useState<(() => void) | null>(null);
   const [isPlaidReady, setIsPlaidReady] = useState(false);
-  const [balance, setBalance] = useState<string | null>(null);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [publicToken, setPublicToken] = useState<string | null>(null);
-  const [savingsRec, setSavingsRec] = useState<string>("");
+  const [balance, setBalance] = useState<string | null>(() => {
+    return localStorage.getItem("balance") || null;
+  });
+  const [transactions, setTransactions] = useState<Transaction[]>(() => {
+    const savedTransactions = localStorage.getItem("transactions");
+    return savedTransactions ? JSON.parse(savedTransactions) : [];
+  });
+  const [publicToken, setPublicToken] = useState<string | null>(() => {
+    return localStorage.getItem("publicToken") || null;
+  });
+  const [savingsRec, setSavingsRec] = useState<string>(() => {
+    return localStorage.getItem("savingsRec") || "";
+  });
   const chartRef = useRef<Chart<"pie", number[], string> | null>(null);
 
   const getAnalytics = api.gemini.getAnalytics.useMutation();
+
+  // Save the state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("balance", balance || "");
+  }, [balance]);
+
+  useEffect(() => {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+  }, [transactions]);
+
+  useEffect(() => {
+    localStorage.setItem("publicToken", publicToken || "");
+  }, [publicToken]);
+
+  useEffect(() => {
+    localStorage.setItem("savingsRec", savingsRec || "");
+  }, [savingsRec]);
 
   // Calculate total expenses by summing up all the transaction amounts
   const totalExpenses = transactions.reduce((acc, transaction) => {
@@ -239,5 +263,7 @@ export default function DashboardPage() {
             <StockPrices /> {/* This is where StockPrices component will display EOD stock data */}
           </div>
         </div>
-      </div> </div>)
+      </div> 
+    </div>
+  );
 }
